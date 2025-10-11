@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int sum = 0;
+        int count = 0;
+        int temp = num;
+
+        while (temp > 0) {
+            count++;
+            temp /= 10;
+        }
+
+        if (count <= 2) {
+            System.out.println("Invalid Input");
+        } else {
+            while (num > 0) {
+                sum += num % 10;
+                num /= 10;
+            }
+            System.out.println("Sum of digit is " + sum);
+        }
+
+        sc.close();
+    }
+}
