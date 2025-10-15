@@ -1,0 +1,47 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        
+        List<Integer> evenPos = new ArrayList<>();
+        List<Integer> oddPos = new ArrayList<>();
+        
+        
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0)
+                evenPos.add(arr[i]);
+            else
+                oddPos.add(arr[i]);
+        }
+        
+        
+        Collections.sort(evenPos);
+        Collections.sort(oddPos);
+        
+       
+        int secondLargestEven = 0;
+        if (evenPos.size() >= 2)
+            secondLargestEven = evenPos.get(evenPos.size() - 2);
+        else if (evenPos.size() == 1)
+            secondLargestEven = evenPos.get(0);
+        
+        
+        int secondSmallestOdd = 0;
+        if (oddPos.size() >= 2)
+            secondSmallestOdd = oddPos.get(1);
+        else if (oddPos.size() == 1)
+            secondSmallestOdd = oddPos.get(0);
+        
+        int sum = secondLargestEven + secondSmallestOdd;
+        
+        System.out.println("Sum=" + sum);
+    }
+}
