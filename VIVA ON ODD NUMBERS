@@ -1,0 +1,27 @@
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the numbers");
+
+        int correctOddCount = 0;
+        double score = 0.0;
+
+        while (correctOddCount < 3 && sc.hasNextInt()) {
+            int num = sc.nextInt();
+            System.out.println(num); // echo the input
+
+            if (num < 0) {
+                score -= 1;
+                break;
+            } else if (num % 2 == 0) {
+                score -= 0.5;
+            } else {
+                score += 1;
+                correctOddCount++;
+            }
+        }
+
+        System.out.printf("%.1f\n", score);
+    }
+}
