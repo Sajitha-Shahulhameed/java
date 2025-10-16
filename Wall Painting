@@ -1,0 +1,35 @@
+import java.util.*;
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int wallL = sc.nextInt();
+        int wallB = sc.nextInt();
+        int p1L = sc.nextInt();
+        int p1B = sc.nextInt();
+        int p2L = sc.nextInt();
+        int p2B = sc.nextInt();
+
+        if (canFit(wallL, wallB, p1L, p1B, p2L, p2B)) {
+            System.out.println("Raj can fix both painting");
+        } else {
+            System.out.println("Raj cannot fix both painting");
+        }
+    }
+
+    public static boolean canFit(int W, int H, int a1, int b1, int a2, int b2) {
+        // Check all possible orientations
+        return (fitsSideBySide(W, H, a1, b1, a2, b2) ||
+                fitsSideBySide(W, H, a1, b1, b2, a2) ||
+                fitsSideBySide(W, H, b1, a1, a2, b2) ||
+                fitsSideBySide(W, H, b1, a1, b2, a2));
+    }
+
+    public static boolean fitsSideBySide(int W, int H, int l1, int b1, int l2, int b2) {
+        // Horizontal arrangement
+        if ((l1 + l2 <= W && Math.max(b1, b2) <= H) || 
+            (Math.max(l1, l2) <= W && b1 + b2 <= H))
+            return true;
+        return false;
+    }
+}
